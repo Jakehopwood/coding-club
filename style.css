@@ -27,18 +27,36 @@ h1 {
 
 /* sketch canvas sits directly on the page background */
 .card > div {
-  order: 1;
   width: 100%;
 }
 
-/* caption sits below, left-aligned */
+/* title sits below the sketch, left-aligned */
 .card h2 {
-  order: 2;
   margin: 0.75rem 0 0;
   font-size: 0.95rem;
   font-weight: 500;
   text-align: left;
   color: #333;
+}
+
+/* student name, small and understated */
+.card .student {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: left;
+  color: #777;
+}
+
+/* short description of the sketch */
+.card .description {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-align: left;
+  color: #555;
+  line-height: 1.4;
+  max-width: 32ch; /* keeps longer descriptions readable rather than full-width */
 }
 
 canvas {
@@ -100,7 +118,13 @@ canvas {
     width: auto; /* let the sketch keep its own size instead of filling the column */
   }
 
-  .card h2 {
+  .card h2,
+  .card .student,
+  .card .description {
     text-align: center;
+  }
+
+  .card .description {
+    max-width: 32ch;
   }
 }
