@@ -6,22 +6,73 @@ body {
 }
 
 h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .gallery {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4rem 3rem;
 }
 
 .card {
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* sketch canvas sits directly on the page background */
+.card > div {
+  order: 1;
+}
+
+/* caption sits below, left-aligned */
+.card h2 {
+  order: 2;
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  color: #333;
 }
 
 canvas {
   display: block;
+}
+
+/* Varied vertical placement and scale, on a repeating 5-step cycle.
+   Any sketch you add automatically picks up one of these 5 looks based
+   on its position in the gallery (1st, 6th, 11th... all get look 1, etc).
+   To add more variety, extend the cycle: change every 5n above to 6n (etc),
+   and add a 6th :nth-child(6n+0) rule below. */
+
+.card:nth-child(5n+1) { margin-top: 0; }
+.card:nth-child(5n+1) canvas {
+  width: 320px !important;
+  height: 320px !important;
+}
+
+.card:nth-child(5n+2) { margin-top: 5rem; }
+.card:nth-child(5n+2) canvas {
+  width: 200px !important;
+  height: 200px !important;
+}
+
+.card:nth-child(5n+3) { margin-top: 1.5rem; }
+.card:nth-child(5n+3) canvas {
+  width: 260px !important;
+  height: 180px !important;
+}
+
+.card:nth-child(5n+4) { margin-top: 3rem; }
+.card:nth-child(5n+4) canvas {
+  width: 240px !important;
+  height: 320px !important;
+}
+
+.card:nth-child(5n+0) { margin-top: 0.5rem; }
+.card:nth-child(5n+0) canvas {
+  width: 280px !important;
+  height: 220px !important;
 }
