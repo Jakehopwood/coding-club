@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 2rem;
+  padding: 3rem 6vw; /* side margins that scale with the window width */
   background: #f5f5f5;
 }
 
@@ -10,21 +10,25 @@ h1 {
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 sketches span the full width */
   gap: 4rem 3rem;
+  align-items: start;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0; /* stops fixed canvas widths from overflowing their grid column */
 }
 
 /* sketch canvas sits directly on the page background */
 .card > div {
   order: 1;
+  width: 100%;
 }
 
 /* caption sits below, left-aligned */
@@ -39,40 +43,62 @@ h1 {
 
 canvas {
   display: block;
+  max-width: 100%;
 }
 
-/* Varied vertical placement and scale, on a repeating 5-step cycle.
+/* Varied placement and scale, on a repeating 5-step cycle.
    Any sketch you add automatically picks up one of these 5 looks based
    on its position in the gallery (1st, 6th, 11th... all get look 1, etc).
-   To add more variety, extend the cycle: change every 5n above to 6n (etc),
-   and add a 6th :nth-child(6n+0) rule below. */
+   Sizes use clamp() so they scale fluidly with the viewport rather than
+   jumping abruptly. To add more variety, extend the cycle to 6n/7n etc. */
 
 .card:nth-child(5n+1) { margin-top: 0; }
 .card:nth-child(5n+1) canvas {
-  width: 320px !important;
-  height: 320px !important;
+  width: clamp(160px, 22vw, 320px) !important;
+  height: clamp(160px, 22vw, 320px) !important;
 }
 
 .card:nth-child(5n+2) { margin-top: 5rem; }
 .card:nth-child(5n+2) canvas {
-  width: 200px !important;
-  height: 200px !important;
+  width: clamp(120px, 14vw, 200px) !important;
+  height: clamp(120px, 14vw, 200px) !important;
 }
 
 .card:nth-child(5n+3) { margin-top: 1.5rem; }
 .card:nth-child(5n+3) canvas {
-  width: 260px !important;
-  height: 180px !important;
+  width: clamp(140px, 18vw, 260px) !important;
+  height: clamp(100px, 12vw, 180px) !important;
 }
 
 .card:nth-child(5n+4) { margin-top: 3rem; }
 .card:nth-child(5n+4) canvas {
-  width: 240px !important;
-  height: 320px !important;
+  width: clamp(140px, 16vw, 240px) !important;
+  height: clamp(180px, 22vw, 320px) !important;
 }
 
 .card:nth-child(5n+0) { margin-top: 0.5rem; }
 .card:nth-child(5n+0) canvas {
-  width: 280px !important;
-  height: 220px !important;
+  width: clamp(160px, 19vw, 280px) !important;
+  height: clamp(130px, 15vw, 220px) !important;
+}
+
+/* Collapse to a single column on mobile */
+@media (max-width: 700px) {
+  body {
+    padding: 2rem 1.25rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* remove the desktop stagger so cards don't leave big gaps stacked in one column */
+  .card:nth-child(5n+1),
+  .card:nth-child(5n+2),
+  .card:nth-child(5n+3),
+  .card:nth-child(5n+4),
+  .card:nth-child(5n+0) {
+    margin-top: 0;
+  }
 }
