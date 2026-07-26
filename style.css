@@ -43,44 +43,22 @@ h1 {
 
 canvas {
   display: block;
-  max-width: 100%;
+  width: 400px !important;
+  height: 400px !important;
+  max-width: 100%; /* still shrinks to fit narrower columns/screens */
 }
 
-/* Varied placement and scale, on a repeating 5-step cycle.
-   Any sketch you add automatically picks up one of these 5 looks based
-   on its position in the gallery (1st, 6th, 11th... all get look 1, etc).
-   Sizes use clamp() so they scale fluidly with the viewport rather than
-   jumping abruptly. To add more variety, extend the cycle to 6n/7n etc. */
+/* Varied vertical placement, on a repeating 5-step cycle. Sketches are all
+   the same 400x400 size; only the offset varies. Any sketch you add
+   automatically picks up one of these 5 offsets based on its position
+   (1st, 6th, 11th... all get offset 1, etc). Extend the cycle to 6n/7n
+   etc. for more variety. */
 
 .card:nth-child(5n+1) { margin-top: 0; }
-.card:nth-child(5n+1) canvas {
-  width: clamp(160px, 22vw, 320px) !important;
-  height: clamp(160px, 22vw, 320px) !important;
-}
-
 .card:nth-child(5n+2) { margin-top: 5rem; }
-.card:nth-child(5n+2) canvas {
-  width: clamp(120px, 14vw, 200px) !important;
-  height: clamp(120px, 14vw, 200px) !important;
-}
-
 .card:nth-child(5n+3) { margin-top: 1.5rem; }
-.card:nth-child(5n+3) canvas {
-  width: clamp(140px, 18vw, 260px) !important;
-  height: clamp(100px, 12vw, 180px) !important;
-}
-
 .card:nth-child(5n+4) { margin-top: 3rem; }
-.card:nth-child(5n+4) canvas {
-  width: clamp(140px, 16vw, 240px) !important;
-  height: clamp(180px, 22vw, 320px) !important;
-}
-
 .card:nth-child(5n+0) { margin-top: 0.5rem; }
-.card:nth-child(5n+0) canvas {
-  width: clamp(160px, 19vw, 280px) !important;
-  height: clamp(130px, 15vw, 220px) !important;
-}
 
 /* Tablet: drop to 2 columns, lose the desktop stagger so rows don't
    leave awkward gaps once there are only 2 per row */
