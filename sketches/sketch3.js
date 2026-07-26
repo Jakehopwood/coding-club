@@ -5,7 +5,7 @@ new p5(function (p) {
   let step;
 
   p.setup = function () {
-    p.createCanvas(300, 200); // gallery-friendly size
+    p.createCanvas(400, 400); // gallery-friendly size
     p.frameRate(20);
   };
 

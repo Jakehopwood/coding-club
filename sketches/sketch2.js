@@ -4,7 +4,7 @@ new p5(function (p) {
   let speed = 3;
 
   p.setup = function () {
-    p.createCanvas(300, 200);
+    p.createCanvas(400, 400);
   };
 
   p.draw = function () {

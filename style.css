@@ -14,7 +14,7 @@ h1 {
   grid-template-columns: repeat(3, 1fr); /* 3 sketches span the full width */
   gap: 4rem 3rem;
   align-items: start;
-  max-width: 1600px;
+  max-width: 2000px;
   margin: 0 auto;
 }
 
@@ -43,8 +43,10 @@ h1 {
 
 canvas {
   display: block;
-  width: 400px !important;
-  height: 400px !important;
+  width: 600px !important;  /* p5 sketches render natively at 400x400; this scales
+                                the display size up while staying square (1:1),
+                                so the aspect ratio is preserved either way */
+  height: 600px !important;
   max-width: 100%; /* still shrinks to fit narrower columns/screens */
 }
 
