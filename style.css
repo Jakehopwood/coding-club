@@ -1,5 +1,12 @@
+@font-face {
+  font-family: "Funtauna";
+  src: url("fonts/Funtauna-d5Gspby3UU.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: "Funtauna", sans-serif;
   margin: 0;
   padding: 3rem 6vw; /* side margins that scale with the window width */
   background: #f5f5f5;
