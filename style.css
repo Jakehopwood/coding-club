@@ -43,10 +43,12 @@ h1 {
 
 canvas {
   display: block;
-  width: 600px !important;  /* p5 sketches render natively at 400x400; this scales
-                                the display size up while staying square (1:1),
-                                so the aspect ratio is preserved either way */
-  height: 600px !important;
+  width: 600px !important; /* p5 sketches render natively at 400x400; this scales
+                               the display size up while staying square (1:1) */
+  aspect-ratio: 1 / 1;      /* height always follows width, so it stays square
+                               even when max-width below shrinks it on smaller
+                               screens (fixed height would otherwise stretch it) */
+  height: auto !important;
   max-width: 100%; /* still shrinks to fit narrower columns/screens */
 }
 
